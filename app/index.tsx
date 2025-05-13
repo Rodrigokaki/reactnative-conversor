@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, SafeAreaView, StyleSheet, Text, TextInput, View } from "react-native";
+import { Button, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 
 export default function MainScreen(){
 
@@ -80,21 +80,32 @@ export default function MainScreen(){
 
     <Text style={{fontSize: 32, color: '#ffffff', fontWeight: 500, marginBottom: 20}}>{result}</Text>
     
-    <View style={{flexDirection: 'row'}}>
-    {Array.from({ length: lengthTable }).map((_, index) => (
-      <View style={styles.cell} key={index}>
-        <Text style={{color: '#ffffff', fontSize: 14, margin: 0, padding: 0}}>{2**(lengthTable-index-1)}</Text>
-      </View>
-    ))}
-    </View>
+    <ScrollView 
+      style={{width: '100%', marginBottom: 20, flexGrow: 0}} 
+      horizontal={true} 
+      contentContainerStyle={{
+        flexGrow: 1,
+        justifyContent: 'center'
+      }}
+    >
+      <View style={{flexDirection: 'column', marginBottom: 20}}>
+        <View style={{flexDirection: 'row'}}>
+        {Array.from({ length: lengthTable }).map((_, index) => (
+          <View style={styles.cell} key={index}>
+            <Text style={{color: '#ffffff', fontSize: 14, margin: 0, padding: 0}}>{2**(lengthTable-index-1)}</Text>
+          </View>
+        ))}
+        </View>
 
-    <View style={{flexDirection: 'row', marginBottom: 20}}>
-    {Array.from({ length: lengthTable }).map((_, index) => (
-      <View style={styles.cell} key={index}>
-        <Text style={{color: '#ffffff', fontSize: 14}}>{tableResult[index]}</Text>
+        <View style={{flexDirection: 'row'}}>
+        {Array.from({ length: lengthTable }).map((_, index) => (
+          <View style={styles.cell} key={index}>
+            <Text style={{color: '#ffffff', fontSize: 14}}>{tableResult[index]}</Text>
+          </View>
+        ))}
+        </View>
       </View>
-    ))}
-    </View>
+    </ScrollView>
 
     <Text style={{fontSize: 14, color: '#ffffff', fontWeight: 500, marginBottom: 20}}>{conta}</Text>
   </SafeAreaView>
