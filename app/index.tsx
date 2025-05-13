@@ -105,7 +105,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    margin: 40
+    paddingTop: 20,
+    backgroundColor: '#000000',
   },
   button: {
     marginBottom: 20
